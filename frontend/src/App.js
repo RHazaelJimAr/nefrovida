@@ -1,15 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router} from 'react-router-dom';
+import BaseRouter from './routes';
 import './App.css';
 
 import SimpleContainer from './containers/Container'
-import BeneficiarioList from './containers/BeneficiarioListView'
+
 
 function App() {
   return (
     <div className="App">
-      <SimpleContainer>
-        <BeneficiarioList/>
-      </SimpleContainer>
+      <Router>
+        <SimpleContainer>
+          <BaseRouter/>
+        </SimpleContainer>
+      </Router>
     </div>
   );
 }

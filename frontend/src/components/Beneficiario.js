@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,26 +19,19 @@ function ListItemLink(props) {
 
 const Beneficiarios = (props) => {
     const classes = useStyles();
-
+    
     return (
     <div className={classes.root}>
+      
         <List component="nav" aria-label="main mailbox folders">
-            <ListItem button>
-                <ListItemText primary="Inbox" />
-            </ListItem>
-            <ListItem button>
-                <ListItemText primary="Drafts" />
-            </ListItem>
+          {props.data.state.beneficiarios.map(item => {
+            return (
+              <ListItemLink key={item.id} href={`/${item.id}`}>
+                <ListItemText  primary={item.nombre}/>
+              </ListItemLink>
+            );
+          })}
         </List>
-        <Divider />
-        <List component="nav" aria-label="secondary mailbox folders">
-            <ListItem button>
-                <ListItemText primary="Trash" />
-            </ListItem>
-            <ListItemLink href="#simple-list">
-                <ListItemText primary="Spam" />
-            </ListItemLink>
-      </List>
     </div>
   );
 }
